@@ -18,6 +18,11 @@ window.onload = function() {
       messageInput.disabled = false;
       sendBtn.disabled = false;
 
+      // Display "Connection established" message
+      var connectionStatus = document.getElementById("connection-status");
+      connectionStatus.innerHTML = "Connection established";
+      connectionStatus.style.color = "green";
+
       // TODO: Connect to the other key
       console.log("Connected to key: " + keyInput);
     }
