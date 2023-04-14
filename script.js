@@ -18,26 +18,20 @@ window.onload = function() {
       messageInput.disabled = false;
       sendBtn.disabled = false;
 
-      // Attempt to connect to the other key
+      // Display "Connection established" message
       var connectionStatus = document.getElementById("connection-status");
-      connectionStatus.innerHTML = "Connecting...";
-      connectionStatus.style.color = "black";
-      setTimeout(function() {
-        if (Math.random() < 0.5) {
-          // Connection failed
-          connectionStatus.innerHTML = "Connection failed";
-          connectionStatus.style.color = "red";
-          messageInput.disabled = true;
-          sendBtn.disabled = true;
-        } else {
-          // Connection successful
-          connectionStatus.innerHTML = "Connection established";
-          connectionStatus.style.color = "green";
-          messageInput.disabled = false;
-          sendBtn.disabled = false;
-          console.log("Connected to key: " + keyInput);
-        }
-      }, 2000);
+      connectionStatus.innerHTML = "Connection established";
+      connectionStatus.style.color = "green";
+      connectBtn.insertAdjacentHTML("afterend", "<span class='connect-status' style='color: green;'>Connection established</span>");
+
+      // TODO: Connect to the other key
+      console.log("Connected to key: " + keyInput);
+    } else {
+      // Display "Connection failed" message
+      var connectionStatus = document.getElementById("connection-status");
+      connectionStatus.innerHTML = "Connection failed";
+      connectionStatus.style.color = "red";
+      connectBtn.insertAdjacentHTML("afterend", "<span class='connect-status' style='color: red;'>Connection failed</span>");
     }
   });
 
