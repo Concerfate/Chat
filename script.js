@@ -18,13 +18,26 @@ window.onload = function() {
       messageInput.disabled = false;
       sendBtn.disabled = false;
 
-      // Display "Connection established" message
+      // Attempt to connect to the other key
       var connectionStatus = document.getElementById("connection-status");
-      connectionStatus.innerHTML = "Connection established";
-      connectionStatus.style.color = "green";
-
-      // TODO: Connect to the other key
-      console.log("Connected to key: " + keyInput);
+      connectionStatus.innerHTML = "Connecting...";
+      connectionStatus.style.color = "black";
+      setTimeout(function() {
+        if (Math.random() < 0.5) {
+          // Connection failed
+          connectionStatus.innerHTML = "Connection failed";
+          connectionStatus.style.color = "red";
+          messageInput.disabled = true;
+          sendBtn.disabled = true;
+        } else {
+          // Connection successful
+          connectionStatus.innerHTML = "Connection established";
+          connectionStatus.style.color = "green";
+          messageInput.disabled = false;
+          sendBtn.disabled = false;
+          console.log("Connected to key: " + keyInput);
+        }
+      }, 2000);
     }
   });
 
